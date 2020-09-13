@@ -1,1 +1,3 @@
-
+Requests
+Adafruit-io
+Python-telegram-bot
