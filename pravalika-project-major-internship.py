@@ -36,10 +36,10 @@ def start(update,context):
   context.bot.send_message(chat_id=update.effective_chat.id, text=start_message)
   
   ADAFRUIT_IO_USERNAME = os.getenv('pravalika_sweety')  #username declared
-ADAFRUIT_IO_KEY = os.getenv('aio_UPPn121mQygT0e26TlkchGWnoMVT') #io key declared
-TOKEN =os.getenv('1382715006:AAHkAgkK6FYTwR_mzJhGrKCwJeRplWyArIk') #token declared
+ADAFRUIT_IO_KEY = os.getenv('aio_fcGf78IkijnRcTP5Map57ycu8pC0') #io key declared
+TOKEN = os.getenv('1382715006:AAHkAgkK6FYTwR_mzJhGrKCwJeRplWyArIk') #token declared
 
-io = Client(ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
+aio = Client(ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 updater=Updater(TOKEN,use_context=True)
 dispatcher = updater.dispatcher
 dispatcher.add_handler(CommandHandler('turnoff',turnoff))
