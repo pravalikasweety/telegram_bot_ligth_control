@@ -2,7 +2,7 @@ from telegram.ext import Updater,CommandHandler,MessageHandler,Filters
 from telegram import Update
 import requests
 from Adafruit_IO import Client,Data
-import os # operating system library
+import os
 
 def turnoff(update, context):
   context.bot.send_message(chat_id=update.effective_chat.id, text="Led turned off")
@@ -34,12 +34,12 @@ def start(update,context):
 /turnon or 'turn on'  :To turn on the led ,sends value=1 in feed
 '''
   context.bot.send_message(chat_id=update.effective_chat.id, text=start_message)
+  
+  ADAFRUIT_IO_USERNAME = os.getenv('pravalika_sweety')  #username declared
+ADAFRUIT_IO_KEY = os.getenv('aio_VUzc42ggsC1aIGqbK4GvknuiQ0zf') #io key declared
+TOKEN =os.getenv('1382715006:AAHkAgkK6FYTwR_mzJhGrKCwJeRplWyArIk') #token declared
 
-ADAFRUIT_IO_USERNAME = os.getenv('ADAFRUIT_IO_USERNAME')
-ADAFRUIT_IO_KEY = os.getenv('ADAFRUIT_IO_KEY')
-TOKEN = os.getenv('TOKEN')
-
-aio = Client(ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
+io = Client(ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 updater=Updater(TOKEN,use_context=True)
 dispatcher = updater.dispatcher
 dispatcher.add_handler(CommandHandler('turnoff',turnoff))
@@ -48,5 +48,3 @@ dispatcher.add_handler(CommandHandler('start',start))
 dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command),input_message))
 updater.start_polling()
 updater.idle()
-
-
