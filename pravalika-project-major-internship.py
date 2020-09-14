@@ -1,6 +1,8 @@
 from telegram.ext import Updater,CommandHandler,MessageHandler,Filters
+from telegram import Update
+import requests
 from Adafruit_IO import Client,Data
-import os # operating system
+import os # operating system library
 
 def turnoff(update, context):
   context.bot.send_message(chat_id=update.effective_chat.id, text="Led turned off")
